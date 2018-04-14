@@ -837,10 +837,15 @@ pipenv install jupyter
 - [IPython reference](https://ipython.org/ipython-doc/3/interactive/reference.html)
 - [Flake8](http://flake8.pycqa.org/en/latest/)
 - [Click - create CLI interfaces](http://click.pocoo.org/5/)
+- [boto3 - AWS SDK for Python](https://github.com/boto/boto3) - [docs](https://boto3.readthedocs.io/en/latest/)
 - [Setuptools - packaging python projects](https://setuptools.readthedocs.io/en/latest/)
 - [???](https://blog.sideci.com/about-style-guide-of-python-and-linter-tool-pep8-pyflakes-flake8-haking-pyling-7fdbe163079d)
 - [pythonprogramming.net](https://pythonprogramming.net/)
 - [mutable - immutable](https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747)
+
+## Database Drivers
+- [psycopg - PostgreSQL adapter for Python](http://initd.org/psycopg/) - [docs](http://initd.org/psycopg/docs/)
+- [MySQL Connector/Python](https://github.com/mysql/mysql-connector-python) - [docs](https://dev.mysql.com/doc/connector-python/en/)
 
 ## Youtube
 - [JetBrains TV - What's new in PyCharm 2018.1](https://www.youtube.com/watch?v=Q9YcMvgc0js)
