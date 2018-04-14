@@ -828,6 +828,22 @@ pipenv install jupyter
 ## flask
 [Flask](http://flask.pocoo.org/) is a microframework for Python based on Werkzeug, Jinja 2 and good intentions.
 
+## Handy scripts
+The following are handy python scripts. You can just execute them with ipython
+
+## Removing all non-empty 'target' directories
+
+```python
+import glob
+import shutil
+# listing all dirs
+for filename in glob.iglob('**/target/', recursive=True):
+    print(filename)
+# delete all non-empty directories    
+for filename in glob.iglob('**/target/', recursive=True):
+    shutil.rmtree(filename)
+``` 
+
 ## Resources
 - [Python tutorial](https://docs.python.org/3/tutorial/index.html)
 - [Python standard library](https://docs.python.org/3/library/index.html)
@@ -842,6 +858,11 @@ pipenv install jupyter
 - [???](https://blog.sideci.com/about-style-guide-of-python-and-linter-tool-pep8-pyflakes-flake8-haking-pyling-7fdbe163079d)
 - [pythonprogramming.net](https://pythonprogramming.net/)
 - [mutable - immutable](https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747)
+
+## modules
+- [shutil](https://docs.python.org/3/library/shutil.html)
+- [glob](https://docs.python.org/3/library/glob.html)
+- [os](https://docs.python.org/3/library/os.html)
 
 ## Database Drivers
 - [psycopg - PostgreSQL adapter for Python](http://initd.org/psycopg/) - [docs](http://initd.org/psycopg/docs/)
