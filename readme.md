@@ -217,20 +217,20 @@ Python supports higher order functions and [as of Python 3.6, typing](https://do
 [PEP-526](https://www.python.org/dev/peps/pep-0526/):
 
 ```python
-In [1]: from typing import List
+from typing import List
 
-In [2]: xs: List[int] = [1, 2, 3]
+xs: List[int] = [1, 2, 3]
 
-In [3]: list(map(lambda x: x + 1, xs))
-Out[3]: [2, 3, 4]
+list(map(lambda x: x + 1, xs))
+[2, 3, 4]
 
-In [4]: list(filter(lambda x: x < 2, xs))
-Out[4]: [1]
+list(filter(lambda x: x < 2, xs))
+[1]
 
-In [5]: from functools import reduce
+from functools import reduce
 
-In [6]: reduce(lambda x, y: x + y, xs)
-Out[6]: 6
+reduce(lambda x, y: x + y, xs)
+6
 ```
 
 ## Data Classes
@@ -238,18 +238,17 @@ Python 3.7 onwards support, [Data Classes - PEP-557](https://www.python.org/dev/
 which are accessible by attribute lookup:
 
 ```python
-In [1]: from dataclasses import dataclass
+from dataclasses import dataclass
 
-In [2]: @dataclass
-   ...: class Person:
-   ...:     name: str
-   ...:     age: int
-   ...:
+@dataclass
+class Person:
+   name: str
+   age: int   
 
-In [3]: p: Person = Person("dennis", 42)
+p: Person = Person("dennis", 42)
 
-In [4]: p
-Out[4]: Person(name='dennis', age=42)
+p
+Person(name='dennis', age=42)
 ```
 
 ## Literal String Interpolation
@@ -259,12 +258,12 @@ taken from the leading character used to denote such strings, and standing for "
 
 ```python
 # without interpolation
-In [1]: for x in [1, 2, 3]:
+for x in [1, 2, 3]:
     ...:     for y in [2, 4, 6]:
     ...:         print(str(x) + " * " + str(y) + " = " + str(x * y))
 
 # with interpolation
-In [2]: for x in [1, 2, 3]:
+for x in [1, 2, 3]:
     ...:     for y in [2, 4, 6]:
     ...:         print(f"{x} * {y} = {x * y}")
     ...:
@@ -275,8 +274,8 @@ Python has a way to [format strings](https://docs.python.org/3/library/string.ht
 String literals have a `format` method, that can be used to format a string:
 
 ```python
-In [1]: "Hello {0}, my name is {1}".format("foo", "bar")
-Out[1]: 'Hello foo, my name is bar'
+"Hello {0}, my name is {1}".format("foo", "bar")
+'Hello foo, my name is bar'
 ```
 
 Formatting strings have more options that can be read in the [Format String Syntax](https://docs.python.org/3/library/string.html#format-string-syntax),
@@ -287,49 +286,49 @@ to define how individual values are presented.
 Python supports looping over iterables:
 
 ```python
-In [1]: for x in [1, 2]: print(x)
+for x in [1, 2]: print(x)
 
-In [2]: countdown = 10
+countdown = 10
 
-In [3]: while countdown >= 0:
+while countdown >= 0:
     ...:     print(str(countdown))
     ...:     countdown -= 1
 
-In [4]: [x * y for x in [1, 2, 3] for y in [2, 4, 6] if x > 2 and y <= 4]
-Out[4]: [6, 12]
+[x * y for x in [1, 2, 3] for y in [2, 4, 6] if x > 2 and y <= 4]
+[6, 12]
 
-In [5]: [x * x for x in range(10) if x % 2 == 0]
-Out[5]: [0, 4, 16, 36, 64]
+[x * x for x in range(10) if x % 2 == 0]
+[0, 4, 16, 36, 64]
 ```
 
 ## List operations
 The following are handy list operations:
 
 ```python
-In [1]: xs = [1, 2, 3]
+xs = [1, 2, 3]
 
-In [2]: while xs: print(f"The value is: {xs.pop()}")
+while xs: print(f"The value is: {xs.pop()}")
 The value is: 3
 The value is: 2
 The value is: 1
-In [3]: xs = [1 ,2 ,3]
+xs = [1 ,2 ,3]
 
-In [4]: xs.append(4)
+xs.append(4)
 
-In [5]: xs
-Out[5]: [1, 2, 3, 4]
+xs
+[1, 2, 3, 4]
 
-In [6]: xs[1]
-Out[6]: 2
+xs[1]
+2
 
-In [7]: xs[1::]
-Out[7]: [2, 3, 4]
+xs[1::]
+[2, 3, 4]
 
-In [8]: xs[1:3]
-Out[8]: [2, 3]
+xs[1:3]
+[2, 3]
 
-In [9]: xs[::2]
-Out[9]: [1, 3]
+xs[::2]
+[1, 3]
 
 In [10]: sum([1, 2, 3])
 Out[10]: 6
@@ -377,16 +376,16 @@ c -> 3
 The following are handy string operations:
 
 ```python
-In [1]: str = "a,b,c,d,e"
+str = "a,b,c,d,e"
 
-In [2]: xs = str.split(",")
+xs = str.split(",")
 
-In [3]: xs
-Out[3]: ['a', 'b', 'c', 'd', 'e']
+xs
+['a', 'b', 'c', 'd', 'e']
 
 # note for a join, you first choose a character and then join with the list
-In [4]: ",".join(xs)
-Out[4]: 'a,b,c,d,e'
+",".join(xs)
+'a,b,c,d,e'
 ```
 
 ## Functions
@@ -394,24 +393,24 @@ Functions can be written as follows:
 
 ```python
 # def <name>(params): <function-body or function-block>
-In [1]: def noop(): pass
+def noop(): pass
 
 # function need 'return', when you need to return a value
-In [2]: def filter_even(x: int) -> bool: return x % 2 == 0
+def filter_even(x: int) -> bool: return x % 2 == 0
 
-In [3]: list(filter(filter_even, [1, 2, 3, 4]))
-Out[3]: [2, 4]
+list(filter(filter_even, [1, 2, 3, 4]))
+[2, 4]
 
 # no 'return' necessary for lambdas
-In [4]: list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4]))
-Out[4]: [2, 4]
+list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4]))
+[2, 4]
 
 # functions that don't explicitly return a value, actually do return a value
 # this value is of type 'None'.
-In [5]: def greet(name: str) -> None: print(f"Hello {name}")
+def greet(name: str) -> None: print(f"Hello {name}")
 
 # lets apply the function 'greet' with the argument "Dennis"
-In [5]: greet("Dennis")
+greet("Dennis")
 Hello Dennis
 ```
 
@@ -419,44 +418,44 @@ Hello Dennis
 None represents 'null', 'nothing', 'void', and must be used as follows:
 
 ```python
-In [1]: x = None
+x = None
 
 # note the 'is' keyword
-In [2]: if x is None: print("None")
+if x is None: print("None")
 None
 
-In [3]: x = 1
+x = 1
 
-In [4]: if x is None: print("None")
+if x is None: print("None")
 ```
 
 ## Dictionary
 A dictionary is a key -> value pair, also known as a Map[K, V]:
 
 ```python
-In [1]: from typing import Dict
+from typing import Dict
 
-In [2]: cats: Dict[str, int] = {}
+cats: Dict[str, int] = {}
 
-In [3]: cats['dennis'] = 5
+cats['dennis'] = 5
 
-In [4]: cats
-Out[4]: {'dennis': 5}
+cats
+{'dennis': 5}
 
-In [5]: cats['bar'] = 2
+cats['bar'] = 2
 
-In [6]: cats
-Out[6]: {'dennis': 5, 'bar': 2}
+cats
+{'dennis': 5, 'bar': 2}
 
-In [7]: for cat in cats: print(cat)
+for cat in cats: print(cat)
 dennis
 bar
 
-In [8]: for cat in cats.keys(): print(cat)
+for cat in cats.keys(): print(cat)
 dennis
 bar
 
-In [9]: for cat in cats.values(): print(cat)
+for cat in cats.values(): print(cat)
 5
 2
 
@@ -473,48 +472,48 @@ Since many major binary protocols are based on the ASCII text encoding, bytes ob
 valid when working with ASCII compatible data and are closely related to string objects in a variety of other ways.
 
 ```python
-In [1]: xs = b"Hello World!"
+xs = b"Hello World!"
 
-In [2]: xs
-Out[2]: b'Hello World!'
+xs
+b'Hello World!'
 
-In [3]: for x in xs: print(x)
+for x in xs: print(x)
 72
 101
 ...
 
 # decode() return a string decoded from the given bytes. Default encoding is 'utf-8'.
-In [4]: xs.decode()
-Out[4]: 'Hello World!'
+xs.decode()
+'Hello World!'
 ```
 
 [bytearray](https://docs.python.org/3/library/stdtypes.html#bytearray-objects) bytearray objects are a mutable counterpart to bytes objects.
 As bytearray objects are mutable, they support the mutable sequence operations in addition to the common bytes and bytearray operations.
 
 ```python
-In [1]: xs = bytearray()
+xs = bytearray()
 
-In [2]: xs += b"Hello World!"
+xs += b"Hello World!"
 
-In [3]: xs
-Out[3]: bytearray(b'Hello World!')
+xs
+bytearray(b'Hello World!')
 ```
 
 ## Tuples
 Python supports tuples, a tuple is similar to a list, but is *immutable*, a list is not:
 
 ```python
-In [1]: fruits = ("Apple", "Banana", "Orange", "Lemon")
+fruits = ("Apple", "Banana", "Orange", "Lemon")
 
-In [2]: for fruit in fruits: print(f"Would you like a {fruit}?")
+for fruit in fruits: print(f"Would you like a {fruit}?")
 Would you like a Apple?
 Would you like a Banana?
 Would you like a Orange?
 Would you like a Lemon?
 
 # you can convert a tuple to a list, and a list to a tuple
-In [3]: tuple(list(fruits))
-Out[3]: ('Apple', 'Banana', 'Orange', 'Lemon')
+tuple(list(fruits))
+('Apple', 'Banana', 'Orange', 'Lemon')
 ```
 
 ## Sets
@@ -523,21 +522,21 @@ a set. A Dictionary also uses `{}`, but in a dictionary you give key/value pairs
 `frozenset`, which is just a set, but immutable:
 
 ```python
-In [1]: xs = {1, 2, 3, 3, 3, 2, 1, 4 }
+xs = {1, 2, 3, 3, 3, 2, 1, 4 }
 
-In [2]: xs
-Out[2]: {1, 2, 3, 4}
+xs
+{1, 2, 3, 4}
 
-In [3]: xs = {'a', 'z', 'b', 'z', 'a' }
+xs = {'a', 'z', 'b', 'z', 'a' }
 
-In [4]: xs
-Out[4]: {'a', 'b', 'z'}
+xs
+{'a', 'b', 'z'}
 
-In [5]: xs.intersection({'x', 'y', 'z'})
-Out[5]: {'z'}
+xs.intersection({'x', 'y', 'z'})
+{'z'}
 
-In [6]: xs.union({'x', 'y', 'z'})
-Out[6]: {'a', 'b', 'x', 'y', 'z'}
+xs.union({'x', 'y', 'z'})
+{'a', 'b', 'x', 'y', 'z'}
 ```
 
 ## os module
@@ -546,13 +545,13 @@ The following are handy methods:
 
 ```python
 # getting environment variables
-In [1]: import os
+import os
 
-In [2]: os.getenv('USER')
-Out[2]: 'dennis'
+os.getenv('USER')
+'dennis'
 
-In [3]: os.path.abspath('.')
-Out[3]: '/Users/dennis/projects'
+os.path.abspath('.')
+'/Users/dennis/projects'
 ```
 
 ## sys module
@@ -567,34 +566,174 @@ If the command was executed using the -c command line option to the interpreter,
 If no script name was passed to the Python interpreter, argv[0] is the empty string.
 
 ```python
-In [1]: import sys
+import sys
 
-In [2]: sys.argv
-Out[2]: ['']
+sys.argv
+['']
 ```
 
 ## re module
 The [re module](https://docs.python.org/3/library/re.html) provides regular expression matching operations - whether a string matches a given pattern.
 
 ```python
-In [1]: import re
+import re
 
-In [2]: if re.search('foo', 'foobar'): print("foo is in foobar")
+if re.search('foo', 'foobar'): print("foo is in foobar")
 foo is in foobar
 
-In [3]: if 'foo' in 'foobar': print("foo is in foobar")
+if 'foo' in 'foobar': print("foo is in foobar")
 foo is in foobar
 
-In [4]: if re.search('.bar', 'foobar'): print("Matched!")
+if re.search('.bar', 'foobar'): print("Matched!")
 Matched!
 
-In [5]: if re.search('(foo)(bar)', 'foobar'): print("Matched!")
+if re.search('(foo)(bar)', 'foobar'): print("Matched!")
 Matched!
 
-In [6]: res = re.search('(foo)(bar)', 'foobar')
+res = re.search('(foo)(bar)', 'foobar')
 
-In [7]: res.groups()
-Out[7]: ('foo', 'bar')
+res.groups()
+('foo', 'bar')
+```
+
+## Asynchronous programming
+see: http://masnun.com/2016/03/29/python-a-quick-introduction-to-the-concurrent-futures-module.html
+
+The [concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html) module is part of the Python standard 
+library from v3.2, and provides a high level API for launching asynchronous tasks. 
+The module contains the [Executor](https://docs.python.org/3/library/concurrent.futures.html#executor-objects) class which 
+is an abstract class and it can not be used directly. The `Executor` class has two very concrete subclasses, 
+the [ThreadPoolExecutor](https://docs.python.org/3/library/concurrent.futures.html#threadpoolexecutor) which is used for 
+network operations or I/O, and [ProcessPoolExecutor](https://docs.python.org/3/library/concurrent.futures.html#processpoolexecutor).
+which is used for CPU intensive tasks. The `ProcessPoolExecutor` uses the `multiprocessing` module and is not affected by the 
+Global Interpreter Lock. However, we can not use any objects that is not picklable. So we need to carefully choose what we 
+use/return inside the callable passed to process pool executor. 
+
+### as_completed()
+The `as_completed()` function takes an iterable of Future objects and starts yielding values as soon as the futures start resolving:
+
+```python
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from time import sleep
+from random import randint
+
+def return_after_5_secs(num):
+    sleep(randint(1, 5))
+    return "Return of {}".format(num)
+
+pool = ThreadPoolExecutor(5)
+futures = []
+for x in range(5):
+    futures.append(pool.submit(return_after_5_secs, x))
+
+for x in as_completed(futures):
+    print(x.result())
+```
+
+output:
+
+```
+Return of 0
+Return of 2
+Return of 1
+Return of 3
+Return of 4
+```
+
+alternatively, you can manage the Threadpool:
+
+```python
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from time import sleep
+from random import randint
+
+def return_after_5_secs(num):
+    sleep(randint(1, 5))
+    return "Return of {}".format(num)
+
+with ThreadPoolExecutor(max_workers=5) as executor:
+	futures = [ executor.submit(return_after_5_secs, x) for x in range(5) ]	   
+	for x in as_completed(futures):
+	    print(x.result())
+```
+
+The main difference between the `map` method with `as_completed` is that `map` returns the results in the order in which we pass the iterables. 
+That is the first result from the `map` method is the result for the first item. On the other hand, the first result from the `as_completed` 
+function is from whichever future completed first:
+
+```python
+from concurrent.futures import ProcessPoolExecutor, as_completed
+import math
+
+PRIMES = [
+    112272535095293,
+    112582705942171,
+    112272535095293,
+    115280095190773,
+    115797848077099,
+    1099726899285419]
+
+def is_prime(n):
+    if n % 2 == 0:
+        return False
+ 
+    sqrt_n = int(math.floor(math.sqrt(n)))
+    for i in range(3, sqrt_n + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+with ProcessPoolExecutor() as executor:
+	for number, prime in zip(PRIMES, executor.map(is_prime, PRIMES)):
+		print('%d is prime: %s' % (number, prime))
+```
+
+Output:
+
+```
+112272535095293 is prime: True
+112582705942171 is prime: True
+112272535095293 is prime: True
+115280095190773 is prime: True
+115797848077099 is prime: True
+1099726899285419 is prime: False
+```
+
+### wait()
+The `wait()` function would return a named tuple which contains two set – one set contains the futures which completed (either got result or exception) 
+and the other set containing the ones which didn’t complete:
+
+```python
+from concurrent.futures import ThreadPoolExecutor, wait
+from time import sleep
+from random import randint
+ 
+def return_after_5_secs(num):
+    sleep(randint(1, 5))
+    return "Return of {}".format(num)
+ 
+pool = ThreadPoolExecutor(5)
+futures = []
+for x in range(5):
+    futures.append(pool.submit(return_after_5_secs, x))
+ 
+print(wait(futures))
+
+# decomposing the tuple
+(done, not_done) = wait(futures)
+
+# iterating across 'done' futures
+for x in done: print(x.result())
+```
+
+output:
+
+```
+Return of 0
+Return of 1
+Return of 3
+Return of 2
+Return of 4
 ```
 
 ## pip and pypi
@@ -700,11 +839,11 @@ $ pipenv install boto3
 Using boto3:
 
 ```python
-In [1]: import boto3
+import boto3
 
-In [2]: session = boto3.Session(profile_name='your_profile_name')
+session = boto3.Session(profile_name='your_profile_name')
 
-In [3]: ec2 = session.resource('ec2')
+ec2 = session.resource('ec2')
 
 ```
 
@@ -865,6 +1004,7 @@ for filename in glob.iglob('**/target/', recursive=True):
 - [os](https://docs.python.org/3/library/os.html)
 
 ## Database Drivers
+- [Python Database API Spec - PEP-249](https://www.python.org/dev/peps/pep-0249/)
 - [psycopg - PostgreSQL adapter for Python](http://initd.org/psycopg/) - [docs](http://initd.org/psycopg/docs/)
 - [MySQL Connector/Python](https://github.com/mysql/mysql-connector-python) - [docs](https://dev.mysql.com/doc/connector-python/en/)
 
