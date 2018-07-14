@@ -102,13 +102,49 @@ It can be installed with:
 $ pip3 install ipython
 ```
 
+## Python programming FAQ
+Python has great documentation and a must read is the [FAQ](https://docs.python.org/3/faq/programming.html).
+
+## Python anti-patterns
+Another good read is [The Little Book of Python Anti-Patterns](https://docs.quantifiedcode.com/python-anti-patterns/index.html) 
+
+## Projects and Build Tools
+Apache Maven has set the standard for creating projects. A lot of build tools for programming languages are influenced 
+by the workflow and configuration of Maven. Fortunately, there is a build tool for Python called [pybuilder](https://github.com/pybuilder/pybuilder) 
+that does the same which is:
+
+- has the notion of a project
+- has a project configuration
+- fixed directories for source and test
+- a project lifecycle
+- developer workflow
+- extensible by means of plugins
+- dependency management
+
+__note__: as of 2018-07-14, pybuild is not 3.7 compatible.
+
 ## Modules
 A Python [module](https://docs.python.org/3/tutorial/modules.html) is simply a Python source file, which can expose classes,
 functions and global variables. When imported from another Python source file, the file name is treated as a namespace.
 
 As stated, a module is a file containing Python definitions and statements. The file name is the module name with the
-suffix `.py` appended. Within a module, the module’s name (as a string) is available as the value of the global
+suffix `.py` appended. Within a module, the module’s name (as a string) is available as the value of the local
 variable __name__.
+
+## Global, local and in scope variables
+In Python, variables that are only referenced inside a function are implicitly global. If a variable is assigned a value 
+anywhere within the function’s body, it’s assumed to be a local unless explicitly declared as global.
+
+Though a bit surprising at first, a moment’s consideration explains this. On one hand, requiring global for assigned variables 
+provides a bar against unintended side-effects. On the other hand, if global was required for all global references, 
+you’d be using global all the time. You’d have to declare as global every reference to a built-in function or to a component 
+of an imported module. This clutter would defeat the usefulness of the global declaration for identifying side-effects.
+
+To find out what variables are available in which scope type:
+
+- `dir()` will give you the list of in scope variables:
+- `globals()` will give you a dictionary of global variables
+- `locals()` will give you a dictionary of local variables
 
 ## Executable modules
 Python supports [executable modules](https://docs.python.org/3/tutorial/modules.html#executing-modules-as-scripts).
@@ -734,6 +770,20 @@ Return of 1
 Return of 3
 Return of 2
 Return of 4
+```
+
+```python
+from concurrent.futures import ThreadPoolExecutor
+from time import sleep
+from random import randint
+
+def return_after_random_seconds(num: int):
+    sleep(randint(1, 5))
+    return "Return of {}".format(num)
+
+with ThreadPoolExecutor(max_workers=5) as executor:
+	for y in executor.map(return_after_random_seconds, [1, 2, 3, 4, 5]):
+		print(y)
 ```
 
 ## pip and pypi
