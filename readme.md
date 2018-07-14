@@ -74,7 +74,7 @@ $ python -V
 Python 2.7.14
 
 $ python3 -V
-Python 3.7.0b3
+Python 3.7
 ```
 
 ## Python Main Environment
@@ -1047,6 +1047,9 @@ for filename in glob.iglob('**/target/', recursive=True):
 - [???](https://blog.sideci.com/about-style-guide-of-python-and-linter-tool-pep8-pyflakes-flake8-haking-pyling-7fdbe163079d)
 - [pythonprogramming.net](https://pythonprogramming.net/)
 - [mutable - immutable](https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747)
+
+## Frameworks
+- [Python web frameworks benchmarks](https://klen.github.io/py-frameworks-bench/)
 
 ## modules
 - [shutil](https://docs.python.org/3/library/shutil.html)
