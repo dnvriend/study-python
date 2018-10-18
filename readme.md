@@ -125,11 +125,13 @@ __note__: as of 2018-07-14, pybuild is not 3.7 compatible.
 
 ## Modules
 A Python [module](https://docs.python.org/3/tutorial/modules.html) is simply a Python source file, which can expose classes,
-functions and global variables. When imported from another Python source file, the file name is treated as a namespace.
+functions and global variables. When imported from another Python source file, the file name is treated as a namespace.  Definitions from a module can be imported into other modules
 
-As stated, a module is a file containing Python definitions and statements. The file name is the module name with the
+A module is a file containing Python definitions and statements. The file name is the module name with the
 suffix `.py` appended. Within a module, the module’s name (as a string) is available as the value of the local
 variable __name__.
+
+A module can contain executable statements as well as function definitions. These statements are intended to initialize the module. They are executed only the first time the module name is encountered in an import statement.
 
 ## Global, local and in scope variables
 In Python, variables that are only referenced inside a function are implicitly global. If a variable is assigned a value 
@@ -209,6 +211,8 @@ and the directory can contain Python modules. The names of these modules can be 
 `from com.github.dnvriend.foo import add` when the file `foo.py` has been put in the `com/github/dnvriend` directory.
 Before Python treats the directories as containing packages though, an `__init__.py` file must be contained in the directory.
 In the simplest case, `__init__.py` can just be an empty file, but it can also execute initialization code for the package.
+
+Note: Python 3.7 doesn't need the `__init__.py` files.
 
 For example:
 
